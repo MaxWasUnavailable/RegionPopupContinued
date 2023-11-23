@@ -2,9 +2,17 @@ using HarmonyLib;
 
 namespace RegionPopupContinued.Patches;
 
+/// <summary>
+///     Patches <see cref="RegionBlender" />.
+/// </summary>
 [HarmonyPatch(typeof(RegionBlender))]
 internal static class RegionBlenderPatches
 {
+    /// <summary>
+    ///     Patches <see cref="RegionBlender.SwitchRegion" />.
+    ///     Makes it so a notification is shown when switching regions.
+    /// </summary>
+    /// <param name="newRegion">The new region.</param>
     [HarmonyPatch(nameof(RegionBlender.SwitchRegion))]
     [HarmonyPrefix]
     private static void SwitchRegionPrefix(Region newRegion)
