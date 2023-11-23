@@ -17,6 +17,8 @@ internal static class RegionBlenderPatches
     [HarmonyPrefix]
     private static void SwitchRegionPrefix(Region newRegion)
     {
+        if (!GameState.playing) return;
+
         var regionNotification = "Now entering ";
 
         switch (newRegion.portRegion)
